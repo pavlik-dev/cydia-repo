@@ -13,9 +13,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Compress Packages file
+    - name: Removing old Packages
       run: |
-        gzip -c Packages > Packages.gz
+        rm ./Packages*
+
+    - name: Doing all the magic (gz_generator*)
+      run: |
+        chmod +x ./gz_generator.sh
+        ./gz_generator.sh
 
     - name: Commit and push changes
       run: |

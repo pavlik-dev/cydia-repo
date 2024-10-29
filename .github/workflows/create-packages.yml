@@ -13,18 +13,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-<<<<<<< HEAD
     - name: Removing old Packages
       run: |
         rm ./Packages*
 
     - name: Making gz_generator.sh executable
-=======
-    - name: Doing all the magic (gz_generator*)
->>>>>>> 8e188e36520ef90706b1803711724a7eb5de4d08
       run: |
         chmod +x ./gz_generator.sh
-
+    
     - name: Doing all the magic (gz_generator*)
       run: |
         ./gz_generator.sh

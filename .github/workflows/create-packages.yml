@@ -13,9 +13,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Removing old Packages
-      run: |
-        rm ./Packages*
+    #- name: Removing old Packages
+    #  run: |
+    #    rm ./Packages*
 
     - name: Making gz_generator.sh executable
       run: |

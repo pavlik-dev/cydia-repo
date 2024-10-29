@@ -20,7 +20,7 @@ jobs:
     - name: Making gz_generator.sh executable
       run: |
         chmod +x ./gz_generator.sh
-    
+
     - name: Doing all the magic (gz_generator*)
       run: |
         ./gz_generator.sh
@@ -36,10 +36,9 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git add Packages
         git config --global user.name "GitHub Action"
         git config --global user.email "action@github.com"
-        git add Packages Packages.gz
+        git add Packages.gz
         git commit -m "Update Packages and Packages.gz"
         git push
       env:

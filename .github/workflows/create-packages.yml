@@ -1,0 +1,28 @@
+name: Update Packages.gz
+
+on:
+  push:
+    branches:
+      - main  # or the branch you are using for your GitHub Pages site
+
+jobs:
+  update-packages:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Compress Packages file
+      run: |
+        gzip -c Packages > Packages.gz
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "GitHub Action"
+        git config --global user.email "action@github.com"
+        git add Packages Packages.gz
+        git commit -m "Update Packages and Packages.gz"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -18,8 +18,13 @@ ctrl = read.decode().strip()
 
 config = dict([l.split(':', 1) for l in ctrl.splitlines() if l and ':' in l])
 
+#name_only = debfile.removeprefix('debs/').removesuffix('.deb')
+basename = lambda path: '.'.join(path.split('/')[-1].split('.')[:-1])
+name_only = basename(debfile)
 config['Size'] = str(os.path.getsize(debfile))
 config['Filename'] = debfile
+config['Depiction'] = (config['Depiction'] if not os.path.isfile('deps/'+name_only+'.html') \
+	else 'deps/'+name_only+'.html')
 
 md5 = hashlib.md5()
 sha1 = hashlib.sha1()
